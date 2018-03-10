@@ -11,13 +11,14 @@ const PlaylistItem = props => {
       <Item.Content>
         <Button
           icon="heart"
-          content="0"
+          content={track.votes.count}
           compact
           circular
           floated="right"
-          secondary
-          className="ttl-bg"
+          className={track.votes.userVoted ? 'ttl-heart-bg' : 'ttl-bg'}
           size="big"
+          secondary
+          onClick={() => props.setLike()}
         />
         <Button
           compact
@@ -25,8 +26,9 @@ const PlaylistItem = props => {
           icon="arrow up"
           floated="right"
           secondary
-          className="ttl-bg"
+          className={track.priority ? 'ttl-success-bg' : 'ttl-bg'}
           size="big"
+          onClick={() => props.setPrioritary()}
         />
         <Item.Image
           size="tiny"

@@ -23,13 +23,21 @@
 .ttl-bg {
   background-color: rgb(52, 52, 52) !important;
 }
+
+.ttl-success-bg {
+  background-color: rgb(123, 208, 138) !important;
+}
+
+.ttl-heart-bg {
+  background-color: rgb(206, 103, 106) !important;
+}
+
 .ui.segment {
   padding-bottom: 0;
   padding-top: 0.8em;
   padding-left: 0;
   padding-right: 0;
 }
-
 .ui.floated.image,
 .ui.floated.images {
   margin-bottom: 0.1em;
@@ -39,8 +47,8 @@
   position: relative !important;
 }
 .item.relative {
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
 }
 
 .is-priority::before {
