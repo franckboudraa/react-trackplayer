@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Item } from 'semantic-ui-react';
+import { Item, Segment } from 'semantic-ui-react';
 import FlipMove from 'react-flip-move';
 
 import PlaylistItem from './PlaylistItem';
+import PlaylistEmpty from './PlaylistEmpty';
 
 class PlaylistList extends Component {
   constructor(props) {
@@ -49,19 +50,23 @@ class PlaylistList extends Component {
       ['priority', 'votes.count'],
       ['desc', 'desc']
     );
-    return (
-      <Item.Group divided>
-        <FlipMove duration={350} typeName={null} easing="ease-out">
-          {tracks.map(track => (
-            <PlaylistItem
-              key={track.id}
-              {...track}
-              setLike={() => this.setLike(track.id)}
-              setPrioritary={() => this.setPrioritary(track.id)}
-            />
-          ))}
-        </FlipMove>
-      </Item.Group>
+    return tracks.length > 0 ? (
+      <Segment>
+        <Item.Group divided className="relative">
+          <FlipMove duration={350} typeName={null} easing="ease-out">
+            {tracks.map(track => (
+              <PlaylistItem
+                key={track.id}
+                {...track}
+                setLike={() => this.setLike(track.id)}
+                setPrioritary={() => this.setPrioritary(track.id)}
+              />
+            ))}
+          </FlipMove>
+        </Item.Group>
+      </Segment>
+    ) : (
+      <PlaylistEmpty />
     );
   }
 }

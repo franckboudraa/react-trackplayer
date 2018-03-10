@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import tracks from '../db/tracks.json';
 
 import PlaylistList from './Playlist/PlaylistList';
@@ -9,9 +9,7 @@ const Playlist = () => {
     <Grid centered>
       <Grid.Row>
         <Grid.Column width={12}>
-          <Segment>
-            <PlaylistList tracks={tracks} />
-          </Segment>
+          <PlaylistList tracks={tracks} />
         </Grid.Column>
       </Grid.Row>
     </Grid>
