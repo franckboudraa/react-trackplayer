@@ -8,7 +8,7 @@ const Playlist = ({ tracks }) => {
       <Grid.Row>
         <Grid.Column width={12}>
           <Segment>
-            <Item.Group divided className="relative">
+            <Item.Group divided>
               {tracks.map(track => <PlaylistItem key={track.id} {...track} />)}
             </Item.Group>
           </Segment>

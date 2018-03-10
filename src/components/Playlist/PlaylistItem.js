@@ -5,7 +5,7 @@ import { Button, Item, Image } from 'semantic-ui-react';
 const PlaylistItem = props => {
   const track = props;
   return (
-    <Item>
+    <Item className={track.priority ? 'relative is-priority' : 'relative'}>
       <Item.Image size="tiny" src={track.adder.pictureUrl} />
 
       <Item.Content>

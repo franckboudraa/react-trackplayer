@@ -19,7 +19,7 @@
     "id": 2,
     "name": "Purple Haze",
     "duration": 229,
-    "priority": false,
+    "priority": true,
     "artist": "Jimi Hendrix",
     "adder": {
       "id": 1,
