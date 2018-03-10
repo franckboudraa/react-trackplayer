@@ -42,7 +42,9 @@ class PlaylistItem extends Component {
           <Item.Meta>{track.artist}</Item.Meta>
           <Item.Extra style={{ float: 'left' }}>
             <a>ajouté par test</a>
-            <span style={{ float: 'right' }}>dans 4 mn</span>
+            <span style={{ float: 'right' }}>
+              dans {Math.round(track.remaining / 60)} mn
+            </span>
           </Item.Extra>
         </Item.Content>
       </Item>

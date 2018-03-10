@@ -50,6 +50,7 @@ class PlaylistList extends Component {
       ['priority', 'votes.count'],
       ['desc', 'desc']
     );
+    let duration = 0;
     return tracks.length > 0 ? (
       <Segment>
         <Item.Group divided className="relative">
@@ -58,6 +59,7 @@ class PlaylistList extends Component {
               <PlaylistItem
                 key={track.id}
                 {...track}
+                remaining={(duration += track.duration)}
                 setLike={() => this.setLike(track.id)}
                 setPrioritary={() => this.setPrioritary(track.id)}
               />
