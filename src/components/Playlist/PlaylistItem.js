@@ -1,8 +1,32 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { Button, Item, Image } from 'semantic-ui-react';
 
-class PlaylistItem extends Component {
+class PlaylistItem extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentIndex: this.props.index
+    };
+  }
+  componentDidMount = () => {
+    this.state.index === 1 && this.props.setPlayingTrack(this.props);
+  };
+
+  componentWillReceiveProps = nextProps => {
+    if (this.state.currentIndex !== nextProps.index) {
+      this.setState(
+        {
+          currentIndex: nextProps.index
+        },
+        () => {
+          this.state.currentIndex === 1 &&
+            this.props.setPlayingTrack(this.props);
+        }
+      );
+    }
+  };
   render() {
     const track = this.props;
     return (

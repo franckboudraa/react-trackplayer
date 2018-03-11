@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { Grid } from 'semantic-ui-react';
 
@@ -8,12 +8,15 @@ import PlaylistList from './Playlist/PlaylistList';
 import SearchBar from './Search/SearchBar';
 import SearchResult from './Search/SearchResult';
 
-class Playlist extends Component {
+class Playlist extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       searchResults: null,
-      tracks
+      tracks,
+      currentTrack: {
+        name: ''
+      }
     };
   }
 
@@ -43,9 +46,20 @@ class Playlist extends Component {
       tracks: [...prevState.tracks, newTrack]
     }));
   };
+
+  dispatchPlayingTrack = track => {
+    console.log('dispatch' + track.name);
+    this.setState({
+      currentTrack: track
+    });
+  };
   render() {
+    const { currentTrack } = this.state;
     return (
       <Grid centered>
+        <Grid.Row>
+          <Grid.Column width={16}>{currentTrack.name}</Grid.Column>
+        </Grid.Row>
         <Grid.Row>
           <Grid.Column width={6}>
             <SearchBar
@@ -59,7 +73,10 @@ class Playlist extends Component {
             />
           </Grid.Column>
           <Grid.Column width={10}>
-            <PlaylistList tracks={this.state.tracks} />
+            <PlaylistList
+              tracks={this.state.tracks}
+              setPlayingTrack={track => this.dispatchPlayingTrack(track)}
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
