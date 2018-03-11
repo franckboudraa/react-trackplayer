@@ -14,12 +14,14 @@ class SearchBar extends Component {
     console.log(API_URL);
     this.state = {
       term: '',
-      tracklist: null
+      tracklist: null,
+      loading: false
     };
   }
   onInputChange(term) {
     this.setState({ term });
     this.videoSearch(term);
+    this.setState({ loading: true });
   }
 
   videoSearch = _.debounce(term => {
@@ -36,18 +38,26 @@ class SearchBar extends Component {
       for (let i = 0; i < 5; i++) {
         tracklist.push(await track[i]);
         //console.log(tracklist[i]);
-        i === 4 && this.props.onSearchEnded(tracklist);
+        if (i === 4) {
+          this.setState({ loading: false });
+          this.props.onSearchEnded(tracklist);
+        }
       }
+    } else {
+      this.setState({ loading: false });
     }
   };
 
   render() {
     return (
       <Input
+        loading={this.state.loading ? true : false}
         fluid
         type="text"
         value={this.state.term}
         onChange={event => this.onInputChange(event.target.value)}
+        icon={{ name: 'search', circular: true, link: true }}
+        placeholder="Rechercher une chanson"
       />
     );
   }

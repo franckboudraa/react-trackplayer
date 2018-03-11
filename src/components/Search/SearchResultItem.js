@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
+import { Button, Icon, Item } from 'semantic-ui-react';
 
 const SearchResultItem = props => {
   return (
@@ -14,7 +14,16 @@ const SearchResultItem = props => {
         <Item.Header>{props.name}</Item.Header>
         <Item.Description>{props.artist}</Item.Description>
         <Item.Extra>
-          <Button floated="right">Action</Button>
+          <Button
+            floated="right"
+            circular
+            compact
+            className="ttl-bg"
+            secondary
+            icon
+          >
+            <Icon name="arrow right" />
+          </Button>
         </Item.Extra>
       </Item.Content>
     </Item>
