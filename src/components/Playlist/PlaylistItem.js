@@ -71,7 +71,9 @@ class PlaylistItem extends PureComponent {
           <Item.Extra style={{ float: 'left' }}>
             <a>ajouté par kiki</a>
             <span style={{ float: 'right' }}>
-              dans {Math.round(track.remaining / 60)} mn
+              {Math.round(track.remaining / 60) === 0
+                ? 'En cours'
+                : `dans ${Math.round(track.remaining / 60)} mn`}
             </span>
           </Item.Extra>
         </Item.Content>

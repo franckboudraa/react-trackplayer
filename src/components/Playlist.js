@@ -7,6 +7,7 @@ import tracks from '../db/tracks.json';
 import PlaylistList from './Playlist/PlaylistList';
 import SearchBar from './Search/SearchBar';
 import SearchResult from './Search/SearchResult';
+import Player from './Player/Player';
 
 class Playlist extends PureComponent {
   constructor(props) {
@@ -48,17 +49,17 @@ class Playlist extends PureComponent {
   };
 
   dispatchPlayingTrack = track => {
-    console.log('dispatch' + track.name);
     this.setState({
       currentTrack: track
     });
   };
   render() {
-    const { currentTrack } = this.state;
     return (
       <Grid centered>
         <Grid.Row>
-          <Grid.Column width={16}>{currentTrack.name}</Grid.Column>
+          <Grid.Column width={16}>
+            <Player track={this.state.currentTrack} />
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={6}>
