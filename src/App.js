@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <Container textAlign="center">
-        <h1>Tracktr</h1>
+        <h1>Tracklist Player</h1>
         <Playlist />
         <Menu secondary size="mini" widths={1}>
           <Menu.Item name="footer">&copy; 2018 Franck Boudraa</Menu.Item>
