@@ -7,7 +7,11 @@ class PlaylistItem extends Component {
     const track = this.props;
     return (
       <Item className={track.priority ? 'relative is-priority' : 'relative'}>
-        <Item.Image size="tiny" src={track.adder.pictureUrl} />
+        <Item.Image
+          size="tiny"
+          className="circle"
+          src={track.adder.pictureUrl}
+        />
 
         <Item.Content>
           <Button

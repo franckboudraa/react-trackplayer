@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <Container textAlign="center">
-        <h1>Track Playlist</h1>
+        <h1>TrackPL</h1>
         <Playlist />
       </Container>
     );
