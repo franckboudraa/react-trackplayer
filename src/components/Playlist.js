@@ -12,15 +12,36 @@ class Playlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: null
+      searchResults: null,
+      tracks
     };
   }
 
   dispatchSearchResults = searchResults => {
-    console.log(searchResults);
     this.setState(prevState => {
       return { searchResults };
     });
+  };
+
+  dispatchNewTrack = track => {
+    const newTrack = {
+      id: this.state.tracks.length + 1,
+      name: track.name,
+      duration: 211,
+      priority: false,
+      artist: track.artist,
+      adder: {
+        id: 1,
+        name: 'kant',
+        pictureUrl:
+          'https://res.cloudinary.com/jukeo-net/image/upload/ano-b2_eezggd'
+      },
+      pictureUrl: track.image[2]['#text'],
+      votes: { count: 0, userVoted: false }
+    };
+    this.setState(prevState => ({
+      tracks: [...prevState.tracks, newTrack]
+    }));
   };
   render() {
     return (
@@ -32,10 +53,13 @@ class Playlist extends Component {
                 this.dispatchSearchResults(searchResults)
               }
             />
-            <SearchResult tracks={this.state.searchResults} />
+            <SearchResult
+              tracks={this.state.searchResults}
+              addTrackToPlaylist={track => this.dispatchNewTrack(track)}
+            />
           </Grid.Column>
           <Grid.Column width={10}>
-            <PlaylistList tracks={tracks} />
+            <PlaylistList tracks={this.state.tracks} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -15,14 +15,15 @@ const SearchResultItem = props => {
         <Item.Description>{props.artist}</Item.Description>
         <Item.Extra>
           <Button
+            icon
             floated="right"
             circular
             compact
             className="ttl-bg"
             secondary
-            icon
+            onClick={() => props.addTrackToPlaylist(props)}
           >
-            <Icon name="arrow right" />
+            <Icon name="add" />
           </Button>
         </Item.Extra>
       </Item.Content>

@@ -45,7 +45,7 @@ class PlaylistItem extends Component {
           <Item.Header as="a">{track.name}</Item.Header>
           <Item.Meta>{track.artist}</Item.Meta>
           <Item.Extra style={{ float: 'left' }}>
-            <a>ajouté par test</a>
+            <a>ajouté par kiki</a>
             <span style={{ float: 'right' }}>
               dans {Math.round(track.remaining / 60)} mn
             </span>

@@ -14,6 +14,12 @@ class PlaylistList extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      tracks: nextProps.tracks
+    });
+  }
+
   setPrioritary = id => {
     const newArray = this.state.tracks.map(track => {
       if (track.id === id) {
@@ -50,7 +56,7 @@ class PlaylistList extends Component {
       ['priority', 'votes.count'],
       ['desc', 'desc']
     );
-    let duration = 0;
+    let duration = -200;
     return tracks.length > 0 ? (
       <Segment>
         <Item.Group divided className="relative">
