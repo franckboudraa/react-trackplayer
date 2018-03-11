@@ -10,8 +10,6 @@ const API_URL = BASE_API_URL + '&api_key=' + process.env.REACT_APP_API_KEY;
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
-    console.log(API_URL);
     this.state = {
       term: '',
       tracklist: null,
@@ -31,13 +29,11 @@ class SearchBar extends Component {
   searchOnSpotify = async term => {
     if (term) {
       const res = await axios.get(`${API_URL}&track=${term}`);
-      //console.log(res.data.results.trackmatches.track);
       const { track } = await res.data.results.trackmatches;
 
       let tracklist = [];
       for (let i = 0; i < 5; i++) {
         tracklist.push(await track[i]);
-        //console.log(tracklist[i]);
         if (i === 4) {
           this.setState({ loading: false });
           this.props.onSearchEnded(tracklist);

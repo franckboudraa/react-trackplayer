@@ -8,24 +8,23 @@ const SearchResultItem = props => {
         className="squared"
         size="tiny"
         src={props.image[2]['#text']}
+        style={{ marginBottom: '1em' }}
       />
 
-      <Item.Content verticalAlign="middle">
+      <Item.Content>
+        <Button
+          icon
+          floated="right"
+          circular
+          compact
+          className="ttl-bg"
+          secondary
+          onClick={() => props.addTrackToPlaylist(props)}
+        >
+          <Icon name="add" />
+        </Button>
         <Item.Header>{props.name}</Item.Header>
-        <Item.Description>{props.artist}</Item.Description>
-        <Item.Extra>
-          <Button
-            icon
-            floated="right"
-            circular
-            compact
-            className="ttl-bg"
-            secondary
-            onClick={() => props.addTrackToPlaylist(props)}
-          >
-            <Icon name="add" />
-          </Button>
-        </Item.Extra>
+        <Item.Meta>{props.artist}</Item.Meta>
       </Item.Content>
     </Item>
   );
